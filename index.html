@@ -13,12 +13,48 @@
     ></script>
   </head>
   <body>
-    <!-- top nav-->
+    <!-- Top navbar-->
     <nav class="nav top-nav">
-      <a href="#" class="nav-item">Shortcuts</a>
+      <span class="nav-item popup-container">
+        <script>
+          // TODO: MOVE TO JS FILE
+          function TogglePopup(id) {
+            const popup = document.getElementById(id);
+
+            if (popup.classList.contains("fade")) {
+              popup.classList.remove("fade");
+            } else {
+              popup.classList.add("fade");
+            }
+          }
+        </script>
+        <a href="#" onclick="TogglePopup('shortcuts-popup');return false"
+          >Shortcuts</a
+        >
+        <!-- shortcuts popup -->
+        <div id="shortcuts-popup" class="popup">
+          <ul class="shortcuts-list">
+            <li>
+              <a href="https://www.google.com/">Google</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/">YouTube</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/">Instagram</a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/">Facebook</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/">Twitter</a>
+            </li>
+          </ul>
+        </div>
+      </span>
     </nav>
 
-    <!-- side-nav -->
+    <!-- Side navbar -->
     <nav class="nav side-nav">
       <a href="#" class="nav-item nav-icon">
         <i class="fas fa-angle-double-right nav-item-icon"></i>
@@ -55,6 +91,7 @@
         </form>
       </div>
     </main>
+
     <!-- TODO: Fix whatever this is... V -->
     <!-- <div id="windowToAddName" class="windowToAddName">
       <p id="closeAddName">x</p>
@@ -101,35 +138,8 @@
           src="https://images.unsplash.com/photo-1461301214746-1e109215d6d3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
           alt="Image not available"
         />
-      </div>
-    </div>
-    <div id="shortcutsLink" class="shortcutsLink">
-      <h3 id="shortcutsLinkHeader">Shortcuts</h3>
-      <div id="showLinksTabTriangle"></div>
-      <div id="showLinksTabSquare">
-        <ul class="shortcutsSquareList" id="shortcutsSquareList"></ul>
-      </div>
-    </div>
-    <div id="shortcutsWindow" class="shortcutsWindow">
-      <p id="closeShortcutsWindow">x</p>
-      <div id="showShowShortcutsWindow" class="showShowShortcutsWindow">
-        <ul id="listOfShortcuts" class="listOfShortcuts"></ul>
-        <div id="newShortcutTab" class="newShortcutTab">
-          <input
-            type="text"
-            id="enterNewShortcutURL"
-            class="enterNewShortcutURL"
-            placeholder="Name Of Shortcut"
-          />
-        </div>
-      </div>
-      <div id="addMoreShortcutsDiv" class="addMoreShortcutsDiv">
-        <a href="#" id="addShortcutOption" class="addShortcutOption"
-          ><h3><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Shortcut</h3></a
-        >
-      </div>
-    </div> -->
-    <!-- <p id="searchQuestion">What are you looking for today?</p> -->
+      </div> -->
+
     <script src="scripts/script.js"></script>
   </body>
 </html>
