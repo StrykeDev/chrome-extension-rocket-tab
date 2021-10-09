@@ -76,6 +76,10 @@ a:active {
 }
 
 /* Utilities */
+.hide {
+  display: none;
+}
+
 .unstyled-list {
   list-style: none;
 }
