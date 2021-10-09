@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/theme.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script
+      src="https://kit.fontawesome.com/59e78c517c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- top nav-->
+    <nav class="nav top-nav">
+      <a href="#" class="nav-item">Shortcuts</a>
+    </nav>
+
+    <!-- side-nav -->
+    <nav class="nav side-nav">
+      <a href="#" class="nav-item nav-icon">
+        <i class="fas fa-angle-double-right nav-item-icon"></i>
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa fa-image nav-item-icon"></i>
+        <span class="nav-item-title">Background</span>
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa fa-link nav-item-icon"></i>
+        <span class="nav-item-title">Shortcuts</span>
+      </a>
+
+      <a href="#" class="nav-item">
+        <i class="fa fa-folder nav-item-icon"></i>
+        <span class="nav-item-title">Tab Groups</span>
+      </a>
+    </nav>
+
+    <!-- Main section, everything goes in here aside from floaty bois like navbars and popups -->
+    <main id="main">
+      <div class="text-center">
+        <h1 class="clock">00:00 AM</h1>
+        <!-- TODO: Fix clock ref in js -->
+        <h2 class="hello">Hello you</h2>
+        <!-- TODO: Fix hello ref in js -->
+        <form id="search">
+          <!-- TODO: Switch to form -->
+          <h3>What are you looking for today?</h3>
+          <input id="search-box" type="text" autocomplete="off" />
+          <input type="submit" hidden="true" />
+        </form>
+      </div>
+    </main>
+    <!-- TODO: Fix whatever this is... V -->
+    <!-- <div id="windowToAddName" class="windowToAddName">
+      <p id="closeAddName">x</p>
+      <p class="askToEnterName">Please enter your name</p>
+      <input type="text" id="enterName" autocomplete="off" />
+    </div>
+    <div class="changeBackgroundWindow" id="changeBackgroundWindow">
+      <h1 id="backgroundHeader">Background</h1>
+      <p id="closeChangeBackground">x</p>
+      <div class="backgroundGridContainer">
+        <img
+          id="backgroundGridItem1"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1581888517319-570283943d82?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+          alt="Image not available"
+        />
+        <img
+          id="backgroundGridItem2"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1000&q=80.jpg"
+          alt="Image not available"
+        />
+        <img
+          id="backgroundGridItem3"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1595389962786-f2ca6bb63025?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1414&q=80"
+          alt="Image not available"
+        />
+        <img
+          id="backgroundGridItem4"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1563950708942-db5d9dcca7a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          alt="Image not available"
+        />
+        <img
+          id="backgroundGridItem5"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1511497584788-876760111969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80"
+          alt="Image not available"
+        />
+        <img
+          id="backgroundGridItem6"
+          class="backgroundGridItem"
+          src="https://images.unsplash.com/photo-1461301214746-1e109215d6d3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+          alt="Image not available"
+        />
+      </div>
+    </div>
+    <div id="shortcutsLink" class="shortcutsLink">
+      <h3 id="shortcutsLinkHeader">Shortcuts</h3>
+      <div id="showLinksTabTriangle"></div>
+      <div id="showLinksTabSquare">
+        <ul class="shortcutsSquareList" id="shortcutsSquareList"></ul>
+      </div>
+    </div>
+    <div id="shortcutsWindow" class="shortcutsWindow">
+      <p id="closeShortcutsWindow">x</p>
+      <div id="showShowShortcutsWindow" class="showShowShortcutsWindow">
+        <ul id="listOfShortcuts" class="listOfShortcuts"></ul>
+        <div id="newShortcutTab" class="newShortcutTab">
+          <input
+            type="text"
+            id="enterNewShortcutURL"
+            class="enterNewShortcutURL"
+            placeholder="Name Of Shortcut"
+          />
+        </div>
+      </div>
+      <div id="addMoreShortcutsDiv" class="addMoreShortcutsDiv">
+        <a href="#" id="addShortcutOption" class="addShortcutOption"
+          ><h3><i class="fa fa-plus"></i>&nbsp;&nbsp; Add Shortcut</h3></a
+        >
+      </div>
+    </div> -->
+    <!-- <p id="searchQuestion">What are you looking for today?</p> -->
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
