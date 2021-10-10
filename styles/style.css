@@ -124,6 +124,13 @@ body {
   border-radius: 0.5em;
   background-color: var(--bg-normal);
   box-shadow: 0 0 0.5rem #00000080;
+  opacity: 0;
+}
+
+.popup-show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transform: translateX(0) !important;
 }
 
 #shortcuts-popup::before {
@@ -137,10 +144,11 @@ body {
 }
 
 #shortcuts-popup {
-  min-width: 12em;
+  min-width: 18em;
   margin-top: 1.5em;
   padding: 0.5em 1em;
   right: 1em;
+  transform: translateY(-1em);
 }
 
 #shortcuts-popup .shortcuts-list {
@@ -152,7 +160,20 @@ body {
   margin-bottom: 0.5em;
 }
 
+@media (pointer: none), (pointer: coarse) {
+  .nav {
+    font-size: 1rem;
+  }
 
+  .side-nav {
+    background: linear-gradient(270deg, #00000000, rgba(0, 0, 0, 0.5));
+  }
+
+  .side-nav:hover {
+    background: var(--bg-dark);
+    width: 100%;
+  }
+}
 
 /* 
 

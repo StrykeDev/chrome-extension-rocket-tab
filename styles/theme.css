@@ -77,12 +77,11 @@ a:active {
 
 /* Utilities */
 .hide {
-  display: none !important;
+  visibility: hidden !important;
 }
 
-.fade {
-  opacity: 0 !important;
-  transform: translateY(-1em) !important;
+.collapse {
+  visibility: collapse !important;
 }
 
 .unstyled-list {

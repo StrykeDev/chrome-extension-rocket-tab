@@ -4,35 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Rocket Tab</title>
     <link rel="stylesheet" href="styles/theme.css" />
     <link rel="stylesheet" href="styles/style.css" />
     <script
       src="https://kit.fontawesome.com/59e78c517c.js"
       crossorigin="anonymous"
     ></script>
+    <script src="scripts/popup.js"></script>
   </head>
   <body>
     <!-- Top navbar-->
     <nav class="nav top-nav">
+      <!-- shortcuts popup -->
       <span class="nav-item popup-container">
-        <script>
-          // TODO: MOVE TO JS FILE
-          function TogglePopup(id) {
-            const popup = document.getElementById(id);
-
-            if (popup.classList.contains("fade")) {
-              popup.classList.remove("fade");
-            } else {
-              popup.classList.add("fade");
-            }
-          }
-        </script>
-        <a href="#" onclick="TogglePopup('shortcuts-popup');return false"
-          >Shortcuts</a
-        >
-        <!-- shortcuts popup -->
+        <a href="javascript:void(0);" onclick="TogglePopup('shortcuts-popup');">
+          Shortcuts
+        </a>
         <div id="shortcuts-popup" class="popup">
+          <!-- TODO: Make the links look nicer and add an option to edit them -->
           <ul class="shortcuts-list">
             <li>
               <a href="https://www.google.com/">Google</a>
@@ -76,7 +66,7 @@
       </a>
     </nav>
 
-    <!-- Main section, everything goes in here aside from floaty bois like navbars and popups -->
+    <!-- Main -->
     <main id="main">
       <div class="text-center">
         <h1 class="clock">00:00 AM</h1>
