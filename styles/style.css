@@ -28,7 +28,7 @@ body {
 }
 
 /* Welcome screen */
-.clock {
+#clock {
   font-size: 4em;
   font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
