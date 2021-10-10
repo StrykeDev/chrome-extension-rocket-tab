@@ -11,14 +11,20 @@ body {
 #main {
   width: 100vw;
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1611003228941-98852ba62227?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1974&q=80")
-    no-repeat center center rgb(41, 41, 41);
+  background: linear-gradient(45deg, #d972f3 ,#3764eb);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
   overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 0 0 0.5rem #00000080;
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: 5rem;
 }
 
 /* Welcome screen */
@@ -160,6 +166,23 @@ body {
   margin-bottom: 0.5em;
 }
 
+/* Background options */
+#background-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.background-item {
+  width: 12em;
+  height: 12em;
+  margin: 1em;
+  flex-basis: 24em;
+  flex-grow: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 @media (pointer: none), (pointer: coarse) {
   .nav {
     font-size: 1rem;
@@ -173,7 +196,14 @@ body {
     background: var(--bg-dark);
     width: 100%;
   }
+
+  .container {
+    max-width: none;
+    margin-left: 0;
+  }
 }
+
+
 
 /* 
 

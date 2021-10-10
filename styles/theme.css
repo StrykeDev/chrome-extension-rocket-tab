@@ -75,12 +75,21 @@ a:active {
   color: var(--text-dark);
 }
 
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 0.5em;
+  background-color: var(--bg-normal);
+  box-shadow: 0.25em 0.25em 0.5em #00000080;
+}
+
 /* Utilities */
 .hide {
   visibility: hidden !important;
 }
 
 .collapse {
+  display: none;
   visibility: collapse !important;
 }
 

@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Rocket Tab</title>
+
     <link rel="stylesheet" href="styles/theme.css" />
     <link rel="stylesheet" href="styles/style.css" />
+
     <script
       src="https://kit.fontawesome.com/59e78c517c.js"
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/popup.js"></script>
   </head>
   <body>
     <!-- Top navbar-->
@@ -46,21 +48,34 @@
 
     <!-- Side navbar -->
     <nav class="nav side-nav">
-      <a href="#" class="nav-item nav-icon">
+      <a
+        href="javascript:void(0);"
+        onclick="GoToPage('home-page')"
+        class="nav-item nav-icon"
+      >
         <i class="fas fa-angle-double-right nav-item-icon"></i>
       </a>
-
-      <a href="#" class="nav-item">
+      <a
+        href="javascript:void(0);"
+        onclick="GoToPage('background-options')"
+        class="nav-item"
+      >
         <i class="fa fa-image nav-item-icon"></i>
         <span class="nav-item-title">Background</span>
       </a>
-
-      <a href="#" class="nav-item">
+      <a
+        href="javascript:void(0);"
+        onclick="GoToPage('shortcuts-options')"
+        class="nav-item"
+      >
         <i class="fa fa-link nav-item-icon"></i>
         <span class="nav-item-title">Shortcuts</span>
       </a>
-
-      <a href="#" class="nav-item">
+      <a
+        href="javascript:void(0);"
+        onclick="GoToPage('tab-groups-options')"
+        class="nav-item"
+      >
         <i class="fa fa-folder nav-item-icon"></i>
         <span class="nav-item-title">Tab Groups</span>
       </a>
@@ -68,68 +83,25 @@
 
     <!-- Main -->
     <main id="main">
-      <div class="text-center">
-        <h1 class="clock">00:00 AM</h1>
-        <!-- TODO: Fix clock ref in js -->
-        <h2 class="hello">Hello you</h2>
-        <!-- TODO: Fix hello ref in js -->
+      <section id="home-page" class="continer text-center">
+        <h1 id="clock">00:00 AM</h1>
+        <h2 id="hello">Hello you</h2>
         <form id="search">
-          <!-- TODO: Switch to form -->
           <h3>What are you looking for today?</h3>
           <input id="search-box" type="text" autocomplete="off" />
           <input type="submit" hidden="true" />
         </form>
-      </div>
+      </section>
+
+      <section id="background-options" class="container collapse">
+        <div id="background-list"></div>
+      </section>
     </main>
 
-    <!-- TODO: Fix whatever this is... V -->
-    <!-- <div id="windowToAddName" class="windowToAddName">
-      <p id="closeAddName">x</p>
-      <p class="askToEnterName">Please enter your name</p>
-      <input type="text" id="enterName" autocomplete="off" />
-    </div>
-    <div class="changeBackgroundWindow" id="changeBackgroundWindow">
-      <h1 id="backgroundHeader">Background</h1>
-      <p id="closeChangeBackground">x</p>
-      <div class="backgroundGridContainer">
-        <img
-          id="backgroundGridItem1"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1581888517319-570283943d82?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
-          alt="Image not available"
-        />
-        <img
-          id="backgroundGridItem2"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1000&q=80.jpg"
-          alt="Image not available"
-        />
-        <img
-          id="backgroundGridItem3"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1595389962786-f2ca6bb63025?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1414&q=80"
-          alt="Image not available"
-        />
-        <img
-          id="backgroundGridItem4"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1563950708942-db5d9dcca7a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          alt="Image not available"
-        />
-        <img
-          id="backgroundGridItem5"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1511497584788-876760111969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80"
-          alt="Image not available"
-        />
-        <img
-          id="backgroundGridItem6"
-          class="backgroundGridItem"
-          src="https://images.unsplash.com/photo-1461301214746-1e109215d6d3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
-          alt="Image not available"
-        />
-      </div> -->
-
+    <!-- Post scripts -->
     <script src="scripts/script.js"></script>
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/navigation.js"></script>
   </body>
 </html>
