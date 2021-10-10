@@ -1,6 +1,6 @@
 
 const local = window.localStorage // TODO: Replace with chrome storage
-const main = document.getElementById('main');
+const body = document.body
 const backgroundList = document.getElementById("background-list");
 const width = 1280; // 1680 recommanded
 const images = [
@@ -25,28 +25,28 @@ const images = [
 ];
 
 function BackgroundSelected(backgroundUrl) {
-    main.style.backgroundImage = `url(${backgroundUrl})`;
+    body.style.backgroundImage = `url(${backgroundUrl})`;
     local.setItem('selectedBackground', backgroundUrl);
 }
 
 function RemoveBackground() {
-    main.style.backgroundImage = '';
+    body.style.backgroundImage = '';
     local.removeItem('selectedBackground')
 }
 
 // Load image from localstorage
 const imageUrl = local.getItem('selectedBackground');
 if (imageUrl) {
-    main.style.backgroundImage = `url(${imageUrl})`;
+    body.style.backgroundImage = `url(${imageUrl})`;
 }
 
 // Render buttons
 images.forEach((image) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "background-item btn";
+    button.className = "background-item btn drop-shadow";
     button.onclick = () => BackgroundSelected(image.url);
-    button.innerHTML = '<h2>Loading...<h2>'
+    button.innerHTML = 'Loading...'
     button.disabled = true;
     backgroundList.appendChild(button);
 
@@ -61,11 +61,8 @@ images.forEach((image) => {
 
 const button = document.createElement("button");
 button.type = "button";
-button.className = "background-item btn";
+button.className = "background-item btn drop-shadow";
 button.onclick = () => RemoveBackground();
-button.innerHTML = '<h2>No Background<h2>'
+button.innerHTML = 'No Background'
 button.style.background = 'linear-gradient(45deg, #d972f3 ,#3764eb)'
 backgroundList.appendChild(button);
-
-
-

@@ -1,0 +1,46 @@
+.popup-container {
+  position: relative;
+}
+
+.popup {
+  transition: transform ease 0.2s, opacity ease 0.2s;
+  position: absolute;
+  border-radius: 0.5em;
+  background-color: var(--bg-normal);
+  box-shadow: 0 0 0.5rem #00000080;
+  opacity: 0;
+}
+
+.popup-show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transform: translateX(0) !important;
+}
+
+/* Shortcuts popup */
+#shortcuts-popup::before {
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  right: 1.75em;
+  border-bottom: 0.5em solid var(--bg-normal);
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+}
+
+#shortcuts-popup {
+  min-width: 18em;
+  margin-top: 1.5em;
+  padding: 0.5em 1em;
+  right: 1em;
+  transform: translateY(-1em);
+}
+
+#shortcuts-popup .shortcuts-list {
+  padding-left: inherit;
+  list-style: square;
+}
+
+#shortcuts-popup .shortcuts-list li {
+  margin-bottom: 0.5em;
+}

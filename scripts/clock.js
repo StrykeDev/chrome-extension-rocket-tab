@@ -1,5 +1,4 @@
 
-
 const clock = document.getElementById('clock');
 
 function ClockTick() {

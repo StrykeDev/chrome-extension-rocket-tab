@@ -1,33 +1,35 @@
 "use strict";
 
+// Defining fake chrome locally, "should" work.
 if (!chrome) {
     const chrome = {
-        storage : {
-            local: {}
-        }
-    }
+        storage: {
+            local: {
+                set: (obj) => { window.localStorage.setItem(obj.key, obj.value); },
+
+                get: (key, callback) => {
+                    const data = window.localStorage.getItem(key);
+                    callback(data);
+                },
+            },
+        },
+    };
 }
 
-function chooseRandomBackground() {
-    let listOfPictures = [
-        'https://images.unsplash.com/photo-1581888517319-570283943d82?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-        'https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1000&q=80.jpg',
-        'https://images.unsplash.com/photo-1595389962786-f2ca6bb63025?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1414&q=80',
-        'https://images.unsplash.com/photo-1563950708942-db5d9dcca7a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-        'https://images.unsplash.com/photo-1511497584788-876760111969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80',
-        'https://images.unsplash.com/photo-1461301214746-1e109215d6d3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-    ]
-
-    let chosenImageURL = listOfPictures[Math.floor(Math.random() * listOfPictures.length)];
-    document.getElementById('mainApp').style.backgroundImage = `url(${chosenImageURL})`;
-}
-
-function listenForSearchSubmit() {
+// FIX: Refactor the code and use HTML forms,
+//      it's so much easier and cleaner, HTML should be ready for it
+//      There's a hidden button in the form, pressing enter will press that button for submitting the form,
+//      no need to listen to keydown and stuff like that.
+//
+// Optinal: Add search engine alternatives?
+//
+// Search
+function ListenForSearchSubmit() {
     try {
-        document.getElementById('searchBox').addEventListener('keydown', (key) => {
+        document.getElementById('search-box').addEventListener('keydown', (key) => {
             let keyCode = key.keyCode;
             if (keyCode === 13) {
-                let inputedWordsToSearchTrimmed = document.getElementById('searchBox').value.trim();
+                let inputedWordsToSearchTrimmed = document.getElementById('search-box').value.trim();
                 if (inputedWordsToSearchTrimmed.length === 0) {
                     { }
                 }
@@ -37,12 +39,21 @@ function listenForSearchSubmit() {
                     window.open(`https://www.google.com/search?q=${inputedWordsSplitWithPlus}`, "_self")
                     // console.log(keyCode);
                 }
-
             }
         })
     } catch { }
 }
 
+function makeGoogleSearch() {
+    let searchBarInputText = document.getElementById('search-box').value;
+    console.log(searchBarInputText);
+}
+
+
+// FIX: You can get the user's name from the chrome.extention API
+//      Or should he have a setup/settings page?
+//
+// Greeting
 function listenForNameChange(showCloseOrNo) {
     document.getElementById('windowToAddName').style.zIndex = '6';
     if (showCloseOrNo === true) {
@@ -54,7 +65,7 @@ function listenForNameChange(showCloseOrNo) {
             document.getElementById('timeDigital').style.display = 'initial';
             document.getElementById('hello').style.display = 'initial';
             document.getElementById('searchQuestion').style.display = 'initial';
-            document.getElementById('searchBox').style.borderBottom = 'solid #eeeeee 2px';
+            document.getElementById('search-box').style.borderBottom = 'solid #eeeeee 2px';
             chrome.storage.local.get('userName', function (data) {
                 let name = data['userName'];
                 let helloIntro = `Hello, ${name}`
@@ -77,7 +88,7 @@ function listenForNameChange(showCloseOrNo) {
                 document.getElementById('timeDigital').style.display = 'initial';
                 document.getElementById('hello').style.display = 'initial';
                 document.getElementById('searchQuestion').style.display = 'initial';
-                document.getElementById('searchBox').style.borderBottom = 'solid #eeeeee 2px';
+                document.getElementById('search-box').style.borderBottom = 'solid #eeeeee 2px';
                 chrome.storage.local.get('userName', function (data) {
                     let name = data['userName'];
                     let helloIntro = `Hello, ${name}`
@@ -85,40 +96,9 @@ function listenForNameChange(showCloseOrNo) {
                 })
                 document.getElementById('windowToAddName').style.zIndex = '0';
             }
-
         }
     })
 }
-
-function makeGoogleSearch() {
-    let searchBarInputText = document.getElementById('searchBox').value;
-    console.log(searchBarInputText);
-}
-
-function getTime() {
-    let finalTime = '';
-    let today = new Date();
-    let hours = today.getHours();
-    let AmOrPm = '';
-    let minutes = '';
-    if (hours > 12) {
-        hours = hours - 12;
-        AmOrPm = 'PM';
-    }
-    else {
-        AmOrPm = 'AM';
-    }
-    if (today.getMinutes() < 10) {
-        minutes = `0${today.getMinutes()}`;
-    }
-    else {
-        minutes = today.getMinutes();
-
-    }
-    finalTime = `${hours}:${minutes} ${AmOrPm}`;
-    return finalTime
-}
-
 function welcome() {
     function changeHelloName() {
         try {
@@ -129,11 +109,10 @@ function welcome() {
                 document.getElementById('timeDigital').style.display = 'none';
                 document.getElementById('hello').style.display = 'none';
                 document.getElementById('searchQuestion').style.display = 'none';
-                document.getElementById('searchBox').style.borderBottom = 'solid transparent';
+                document.getElementById('search-box').style.borderBottom = 'solid transparent';
                 listenForNameChange(true)
             })
         } catch { }
-
         chrome.storage.local.get('userName', function (data) {
             if (data['userName'] === undefined) {
                 document.body.style.pointerEvents = 'none';
@@ -142,7 +121,7 @@ function welcome() {
                 document.getElementById('timeDigital').style.display = 'none';
                 document.getElementById('hello').style.display = 'none';
                 document.getElementById('searchQuestion').style.display = 'none';
-                document.getElementById('searchBox').style.borderBottom = 'solid transparent';
+                document.getElementById('search-box').style.borderBottom = 'solid transparent';
                 listenForNameChange(false)
             }
             else {
@@ -151,58 +130,14 @@ function welcome() {
                 document.getElementById('hello').textContent = helloIntro;
                 document.getElementById('hello').style.display = "initial"
             }
-
         })
     }
     changeHelloName()
 }
 
-// chrome.storage.local.set({'userName': 'Roni'})
-function getTime() {
-    let today = new Date();
-    let hours = today.getHours();
-    let AmOrPm = '';
-    let minutes = '';
-    if (hours > 12) {
-        hours = hours - 12;
-        AmOrPm = 'PM';
-    }
-    else {
-        AmOrPm = 'AM';
-    }
-    if (today.getMinutes() < 10) {
-        minutes = `0${today.getMinutes()}`;
-    }
-    else {
-        minutes = today.getMinutes();
-
-    }
-    if (today.getHours() === 0) {
-        hours = 12
-    }
-    let finalTime = `${hours}:${minutes} ${AmOrPm}`;
-    try {
-        document.getElementById('timeDigital').innerHTML = finalTime;
-        if (hours > 9) {
-            document.getElementById('timeDigital').style.left = '205%'
-        }
-    } catch { }
-
-}
-
-function setBackground() {
-    chrome.storage.local.get('backgroundLink', (data) => {
-        let backgroundImageURL = data['backgroundLink'];
-        if (backgroundImageURL === undefined) {
-            chooseRandomBackground()
-        }
-        else {
-            document.getElementById('mainApp').style.backgroundImage = `url(${backgroundImageURL})`;
-        }
-    })
-}
-
-// shortcutMini
+// FIX: Need refactoring
+//
+// Shortcuts
 function addAndRefreshShortcutMini() {
     let allShortcutLi = document.getElementById('shortcutsSquareList').getElementsByTagName('li')
     for (const li of allShortcutLi) {
@@ -282,7 +217,6 @@ function addAndRefreshShortcutMini() {
     listOfShortcutURL.length = 0;
     listOfShortcutName.length = 0;
 }
-addAndRefreshShortcutMini()
 
 function appendShortcuts(shortcutToAdd, nameToAdd, numberOfShortcut) {
     let newShortcut = document.createElement('li')
@@ -415,13 +349,13 @@ function listenForBackBookShort() {
             document.body.style.pointerEvents = 'none';
             document.getElementById('changeBackgroundWindow').style.pointerEvents = 'auto';
             document.getElementById('hello').style.zIndex = '0';
-            document.getElementById('searchBox').style.zIndex = '0';
+            document.getElementById('search-box').style.zIndex = '0';
             document.getElementById('closeChangeBackground').addEventListener('click', () => {
                 document.getElementById('changeBackgroundWindow').style.zIndex = '-2';
                 document.getElementById('addMoreShortcutsDiv').style.zIndex = '-4'
                 document.getElementById('changeBackgroundWindow').style.opacity = '0';
                 document.getElementById('hello').style.zIndex = '2';
-                document.getElementById('searchBox').style.zIndex = '2';
+                document.getElementById('search-box').style.zIndex = '2';
                 document.body.style.pointerEvents = 'auto';
                 document.getElementById('searchQuestion').style.display = 'initial';
 
@@ -468,7 +402,7 @@ function listenForBackBookShort() {
             document.getElementById('searchQuestion').style.display = 'none';
             document.getElementById('shortcutsWindow').style.opacity = '1';
             document.getElementById('hello').style.zIndex = '0';
-            document.getElementById('searchBox').style.zIndex = '0';
+            document.getElementById('search-box').style.zIndex = '0';
             document.body.style.pointerEvents = 'none';
             document.getElementById('shortcutsWindow').style.zIndex = '30';
             document.getElementById('shortcutsWindow').style.opacity = '1';
@@ -476,7 +410,7 @@ function listenForBackBookShort() {
             document.getElementById('closeShortcutsWindow').addEventListener('click', () => {
                 // WHEN CLOSE 
                 document.getElementById('hello').style.zIndex = '2';
-                document.getElementById('searchBox').style.zIndex = '2';
+                document.getElementById('search-box').style.zIndex = '2';
                 document.getElementById('shortcutsWindow').style.zIndex = '-2';
                 document.getElementById('searchQuestion').style.display = 'initial';
                 document.getElementById('shortcutsWindow').style.opacity = '0';
@@ -545,44 +479,11 @@ function listenForBackBookShort() {
     } catch { }
 }
 
-function openAndCloseMini() {
-    let miniIsOpen = false
-    document.getElementById('mainApp').addEventListener('click', (rvt) => {
-        if (rvt['target'] === document.getElementById('shortcutsLinkHeader')) {
-            if (miniIsOpen === false) {
-                document.getElementById('showLinksTabTriangle').style.opacity = '1';
-                document.getElementById('showLinksTabSquare').style.opacity = '1';
-                miniIsOpen = true
-            }
-            else if (miniIsOpen === true) {
-                document.getElementById('showLinksTabTriangle').style.opacity = '0';
-                document.getElementById('showLinksTabSquare').style.opacity = '0';
-                miniIsOpen = false
-            }
-        }
-        else if (miniIsOpen === true) {
-            if (rvt['target'] != document.getElementById('showLinksTabSquare') && rvt['target'] != document.getElementById('showLinksTabTriangle')) {
-                document.getElementById('showLinksTabTriangle').style.opacity = '0';
-                document.getElementById('showLinksTabSquare').style.opacity = '0';
-            }
-            miniIsOpen = false
-
-        }
-        else { }
-    })
-}
-
-function adjustForDifferentScreenSize() {
-    console.log(`Width is ${screen.width}`)
-}
-
-
-welcome()
-listenForSearchSubmit()
-showShortcuts()
-getTime()
-setInterval(getTime, 1000)
-listenForBackBookShort()
-setBackground()
-openAndCloseMini()
-adjustForDifferentScreenSize()
+// NOTE: If it need to execute here then it shouldn't be a function
+// FIX: Remove the functions wrap
+//
+// addAndRefreshShortcutMini()
+// welcome()
+// ListenForSearchSubmit()
+// showShortcuts()
+// listenForBackBookShort()

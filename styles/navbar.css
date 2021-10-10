@@ -1,0 +1,83 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+/* Top navbar */
+.top-nav {
+  width: 100%;
+  background: linear-gradient(0deg, #00000000, rgba(0, 0, 0, 0.25));
+  color: var(--text-light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+.top-nav .nav-item {
+  padding: 1em;
+}
+
+/* Side navbar */
+.side-nav {
+  width: 4em;
+  height: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  transition: width ease 0.2s;
+}
+
+.side-nav:hover {
+  width: 16em;
+}
+
+.side-nav .nav-icon {
+  font-size: 2em;
+  padding: 0 !important;
+}
+
+.side-nav:hover > .nav-icon {
+  opacity: 1;
+}
+
+.side-nav .nav-item {
+  padding: 1em;
+  display: block;
+  opacity: 0.55;
+  transition: opacity ease 0.3s;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.side-nav .nav-item:hover {
+  opacity: 1;
+}
+
+.side-nav .nav-item-icon {
+  padding: 0.5em;
+}
+
+.side-nav .nav-item-title {
+  display: none;
+}
+
+.side-nav:hover .nav-item > .nav-item-title {
+  display: inline;
+}
+
+@media (pointer: none), (pointer: coarse) {
+  .nav {
+    font-size: 1rem;
+  }
+
+  .side-nav {
+    background: linear-gradient(270deg, #00000000, rgba(0, 0, 0, 0.5));
+  }
+
+  .side-nav:hover {
+    background: var(--bg-dark);
+    width: 100%;
+  }
+}

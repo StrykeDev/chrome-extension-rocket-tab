@@ -5,25 +5,20 @@
 */
 
 :root {
-  /* Here we define all of the variables */
+  --primary-color: rgb(10, 100, 200);
+  --secondary-color: rgb(128, 128, 128);
 
-  --primary-color: rgb(0, 92, 153);
-  --secondary-color: rgb(139, 139, 139);
-
-  --bg-light: rgb(214, 214, 214);
-  --bg-normal: rgb(59, 59, 59);
-  --bg-dark: rgb(22, 22, 22);
+  --bg-light: rgb(50, 50, 55);
+  --bg-normal: rgb(30, 30, 35);
+  --bg-dark: rgb(20, 20, 25);
 
   --text-light: rgb(255, 255, 255);
-  --text-normal: rgb(221, 221, 221);
-  --text-dark: rgb(144, 144, 144);
-}
+  --text-normal: rgb(235, 235, 235);
+  --text-dark: rgb(150, 150, 150);
 
-/* TODO: REMOVE it someday when it cause problems */
-input {
-  font-size: 1em;
-  background-color: var(--bg-dark);
-  color: var(--bg-light);
+  --btn-light: rgb(65, 65, 70);
+  --btn-normal: rgb(45, 45, 50);
+  --btn-dark: rgb(35, 35, 40);
 }
 
 /* Removing the outline */
@@ -56,14 +51,28 @@ input {
 h1,
 h2,
 h3 {
+  margin: 0.25em 0;
   color: var(--text-light);
   font-weight: 100;
 }
 
-/* Links */
+h3,
+h4 {
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+h5,
+h6 {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+/* Links and buttons */
 a {
   color: inherit;
   text-decoration: none;
+  transition: color ease 0.2s;
 }
 
 a:hover,
@@ -75,12 +84,53 @@ a:active {
   color: var(--text-dark);
 }
 
-/* Buttons */
-.btn {
+button {
+  padding: 0.5em 1em;
   border: none;
+  background-color: var(--btn-normal);
+  color: var(--text-normal);
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color ease 0.2s, background-color ease 0.2s;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  margin: 0.25em;
   border-radius: 0.5em;
-  background-color: var(--bg-normal);
-  box-shadow: 0.25em 0.25em 0.5em #00000080;
+  background-color: var(--btn-normal);
+  color: var(--text-normal);
+  font-size: inherit;
+  cursor: pointer;
+  transition: color ease 0.2s, background-color ease 0.2s;
+}
+
+button:hover,
+button:focus,
+.btn:hover,
+.btn:focus {
+  background-color: var(--btn-light);
+  color: var(--text-light);
+}
+
+button:active,
+.btn:active {
+  background-color: var(--btn-dark);
+  color: var(--text-dark);
+}
+
+button:disabled,
+.btn:disabled {
+  background-color: var(--btn-dark);
+  color: var(--text-dark);
+  cursor: not-allowed;
+}
+
+/* Inputs */
+input {
+  font-size: inherit;
+  color: inherit;
 }
 
 /* Utilities */
@@ -99,4 +149,8 @@ a:active {
 
 .text-center {
   text-align: center;
+}
+
+.drop-shadow {
+  box-shadow: 0 0 0.5em #00000080;
 }
