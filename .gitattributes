@@ -1,1 +1,8 @@
+
+# Large source files
 *.psd filter=lfs diff=lfs merge=lfs -text
+
+# Backgrounds
+assets/backgrounds/*.jpg filter=lfs diff=lfs merge=lfs -text
+assets/backgrounds/*.png filter=lfs diff=lfs merge=lfs -text
+assets/backgrounds/*.tiff filter=lfs diff=lfs merge=lfs -text
