@@ -1,10 +1,24 @@
 
 import backgrounds from "../assets/backgrounds/backgrounds.js";
-const backgroundList = document.getElementById("background-list");
 
-// TODO: Added fade effect
+const backgroundList = document.getElementById("background-list");
+const backgroundOne = document.getElementById('background-one');
+const backgroundTwo = document.getElementById('background-two');
+let flip = true;
+
 function BackgroundSelected(backgroundIndex, loaded = true) {
-    document.body.style.backgroundImage = `url(${backgrounds[backgroundIndex].url})`;
+    if (flip) {
+        backgroundOne.style.backgroundImage = `url(${backgrounds[backgroundIndex].url})`;
+        backgroundOne.style.opacity = 1;
+        backgroundTwo.style.opacity = 0;
+        flip = false;
+    } else {
+        backgroundTwo.style.backgroundImage = `url(${backgrounds[backgroundIndex].url})`;
+        backgroundTwo.style.opacity = 1;
+        backgroundOne.style.opacity = 0;
+        flip = true;
+    }
+    document.documentElement.style.setProperty("--primary-color", backgrounds[backgroundIndex].color);
 
     if (loaded) {
         chrome.storage.local.set({ 'selectedBackground': backgroundIndex });
@@ -12,7 +26,8 @@ function BackgroundSelected(backgroundIndex, loaded = true) {
 }
 
 function ClearBackground() {
-    document.body.style.backgroundImage = '';
+    backgroundOne.style.opacity = 0;
+    backgroundTwo.style.opacity = 0;
     chrome.storage.local.remove('selectedBackground');
 }
 

@@ -9,7 +9,6 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(1em, 2vw, 2em);
   color: var(--text-normal);
-  text-shadow: 0;
 }
 
 #main {
@@ -51,6 +50,20 @@ body {
 }
 
 /* Background options */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity ease 0.5s;
+  z-index: -1;
+}
+
 #background-list {
   display: flex;
   flex-wrap: wrap;

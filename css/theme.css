@@ -5,7 +5,7 @@
 */
 
 :root {
-  --primary-color: rgb(10, 100, 200);
+  --primary-color: #443bbc;
   --secondary-color: rgb(128, 128, 128);
 
   --bg-light: rgb(50, 50, 55);
@@ -24,6 +24,7 @@
 /* Removing the outline */
 * {
   outline: none;
+  transition: color ease 0.5s, background-color ease 0.5s;
 }
 
 /* scrollbar */
@@ -60,6 +61,10 @@ h5,
 h6 {
   color: var(--text-light);
   font-weight: 600;
+}
+
+.text-primary {
+  color: var(--primary-color);
 }
 
 /* Links and buttons */
