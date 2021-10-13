@@ -16,6 +16,8 @@ if (!chrome) {
     };
 }
 
+
+
 // FIX: Refactor the code and use HTML forms,
 //      it's so much easier and cleaner, HTML should be ready for it
 //      There's a hidden button in the form, pressing enter will press that button for submitting the form,
