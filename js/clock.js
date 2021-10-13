@@ -20,3 +20,4 @@ function ClockTick() {
 }
 
 setInterval(() => ClockTick(), 1000);
+ClockTick()
