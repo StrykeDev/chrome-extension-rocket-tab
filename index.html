@@ -7,24 +7,25 @@
 
     <title>Rocket Tab</title>
 
-    <link rel="stylesheet" href="styles/theme.css" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/navbar.css" />
-    <link rel="stylesheet" href="styles/popup.css" />
-
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="frameworks/fontawesome/css/all.min.css" />
     <script
-      src="https://kit.fontawesome.com/59e78c517c.js"
+      src="frameworks/fontawesome/js/fontawesome.min.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/popup.css" />
   </head>
   <body>
     <!-- Top navbar-->
     <nav class="nav top-nav">
       <!-- shortcuts popup -->
       <span class="nav-item popup-container">
-        <a href="javascript:void(0);" onclick="TogglePopup('shortcuts-popup');">
-          Shortcuts
-        </a>
+        <a id="shortcuts-popup-trigger"> Shortcuts </a>
         <div id="shortcuts-popup" class="popup">
           <!-- TODO: Make the links look nicer and add an option to edit them -->
           <ul class="shortcuts-list">
@@ -50,34 +51,18 @@
 
     <!-- Side navbar -->
     <nav class="nav side-nav">
-      <a
-        href="javascript:void(0);"
-        onclick="GoToPage('home-page')"
-        class="nav-item nav-icon"
-      >
+      <a id="link-home-page" class="nav-item nav-icon">
         <i class="fas fa-angle-double-right nav-item-icon"></i>
       </a>
-      <a
-        href="javascript:void(0);"
-        onclick="GoToPage('background-options')"
-        class="nav-item"
-      >
+      <a id="link-background-options" class="nav-item">
         <i class="fa fa-image nav-item-icon"></i>
         <span class="nav-item-title">Background</span>
       </a>
-      <a
-        href="javascript:void(0);"
-        onclick="GoToPage('shortcuts-options')"
-        class="nav-item"
-      >
+      <a id="link-shortcuts-options" class="nav-item">
         <i class="fa fa-link nav-item-icon"></i>
         <span class="nav-item-title">Shortcuts</span>
       </a>
-      <a
-        href="javascript:void(0);"
-        onclick="GoToPage('tab-groups-options')"
-        class="nav-item"
-      >
+      <a id="link-tab-groups-options" class="nav-item">
         <i class="fa fa-folder nav-item-icon"></i>
         <span class="nav-item-title">Tab Groups</span>
       </a>
@@ -101,10 +86,10 @@
     </main>
 
     <!-- Post scripts -->
-    <script src="scripts/script.js"></script>
-    <script src="scripts/background.js"></script>
-    <script src="scripts/navigation.js"></script>
-    <script src="scripts/popup.js"></script>
-    <script src="scripts/clock.js"></script>
+    <script src="index.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/clock.js"></script>
   </body>
 </html>

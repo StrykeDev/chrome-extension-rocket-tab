@@ -1,21 +1,20 @@
 
-// TODO: Improve the navigation system
+const pages = ["home-page", "background-options"];
+let currentPageIndex = 0
 
-// TEMP, WILL BREAK
-const lastPage = local.getItem('lastPage');
-if (lastPage) {
-    GoToPage(lastPage);
+function GoToPage(pageIndex) {
+    document.getElementById(pages[currentPageIndex]).classList.add("collapse");
+    document.getElementById(pages[pageIndex]).classList.remove("collapse");
+    currentPageIndex = pageIndex;
+    local.setItem('lastPage', pageIndex); // TEMP
 }
 
-function GoToPage(id) {
-    const pages = ["home-page", "background-options"];
+pages.forEach((page, index) => {
+    document.getElementById('link-' + page).addEventListener("click", () => GoToPage(index))
+})
 
-    pages.forEach((page) => {
-        if (page == id) {
-            document.getElementById(page).classList.remove("collapse");
-            local.setItem('lastPage', id)
-        } else {
-            document.getElementById(page).classList.add("collapse");
-        }
-    });
+// TEMP, WILL BREAK
+const lastPageIndex = local.getItem('lastPage');
+if (lastPageIndex) {
+    GoToPage(lastPageIndex);
 }
