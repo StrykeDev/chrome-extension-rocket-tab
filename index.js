@@ -1,22 +1,27 @@
 "use strict";
 
-// Defining fake chrome locally, "should" work.
-if (!chrome) {
-    const chrome = {
+// Defining fake chrome storage locally, "should" work.
+if (!chrome.storage) {
+    chrome = {
         storage: {
             local: {
-                set: (obj) => { window.localStorage.setItem(obj.key, obj.value); },
-
-                get: (key, callback) => {
-                    const data = window.localStorage.getItem(key);
-                    callback(data);
+                set: (obj, _callback = function () { }) => {
+                    window.localStorage.setItem(Object.keys(obj)[0], Object.values(obj)[0]);
+                    _callback(obj);
                 },
+
+                get: (key, _callback = () => { }) => {
+                    const value = window.localStorage.getItem(key);
+                    const obj = new Object()
+                    obj[key] = value
+                    _callback(obj);
+                },
+
+                remove: (key) => { window.localStorage.removeItem(key) }
             },
         },
     };
 }
-
-
 
 // FIX: Refactor the code and use HTML forms,
 //      it's so much easier and cleaner, HTML should be ready for it
