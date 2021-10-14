@@ -33,12 +33,10 @@ nav {
 
 .side-nav:hover {
   width: 16em;
-  color: var(--text-dark);
 }
 
 .side-nav .nav-icon {
   padding: 0 !important;
-  display: block !important;
   font-size: 2em;
 }
 
@@ -74,16 +72,16 @@ nav {
     background-color: transparent;
   }
 
+  .side-nav:hover {
+    background-color: var(--bg-dark);
+    width: 100%;
+  }
+
   .side-nav .nav-item {
     display: none;
   }
 
   .side-nav:hover > .nav-item {
     display: block;
-  }
-
-  .side-nav:hover {
-    background-color: var(--bg-dark);
-    width: 100%;
   }
 }
