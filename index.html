@@ -73,6 +73,11 @@
         <i class="fa fa-folder nav-item-icon"></i>
         <span class="nav-item-title">Tab Groups</span>
       </a>
+
+      <a id="link-app-options" class="nav-item">
+        <i class="fa fa-cog nav-item-icon"></i>
+        <span class="nav-item-title">Settings</span>
+      </a>
     </nav>
 
     <!-- Background -->
@@ -85,10 +90,56 @@
       <section id="home-page" class="container text-center text-shadow">
         <h1 id="clock">00:00 AM</h1>
         <h2 id="greeting">Hello you,</h2>
-        <form id="search">
-          <h3>What are you looking for today?</h3>
-          <input id="search-box" type="text" autocomplete="off" />
+        <form name="search-form">
+          <input
+            type="text"
+            id="search-box"
+            name="search-box"
+            autocomplete="off"
+            maxlength="60"
+          />
           <input type="submit" hidden="true" />
+        </form>
+      </section>
+
+      <!-- App options page -->
+      <section id="app-options" class="container collapse">
+        <h1>Settings</h1>
+        <hr />
+        <form action="#" id="Settings">
+          <label for="display-name">Display name:</label>
+          <input
+            type="text"
+            id="display-name"
+            name="display-name"
+            value=""
+            placeholder="You"
+          /><br />
+
+          <label for="background-color-one">Background colors:</label>
+          <input
+            type="text"
+            id="background-color-one"
+            name="background-color-one"
+            value=""
+            placeholder="Color one"
+          />
+          <input
+            type="text"
+            id="background-color-two"
+            name="background-color-two"
+            value=""
+            placeholder="Color Two"
+          /><br />
+
+          <label for="animate-background">Animate background</label>
+          <input
+            type="checkbox"
+            id="animate-background"
+            name="animate-background"
+          /><br />
+
+          <input type="submit" value="Save" class="btn" />
         </form>
       </section>
 

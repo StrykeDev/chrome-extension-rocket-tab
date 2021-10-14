@@ -43,19 +43,25 @@ body,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#search {
-  display: flex;
-  flex-direction: column;
-}
-
 #search-box {
+  width: 100%;
+  border-radius: 0;
   border: none;
-  border-bottom: solid var(--text-light) 2px;
-  background-color: transparent;
+
+  background: linear-gradient(90deg, #ffffff00, #fff, #ffffff00);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 25% 0.1em;
+  transition: background-size ease 0.5s;
+
   text-align: center;
   color: var(--text-light);
   text-transform: capitalize;
   text-shadow: inherit;
+}
+
+#search-box:focus {
+  background-size: 100% 0.1em;
 }
 
 /* Background options */

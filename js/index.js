@@ -28,7 +28,7 @@ if (!chrome.storage) {
 }
 
 // Register pages
-const pages = ["home-page", "background-options"];
+const pages = ["home-page", "app-options", "background-options"];
 Navigation.RegisterPages(pages);
 
 // Register popups
@@ -39,130 +39,34 @@ Popup.RegisterPopups(popups);
 const clock = document.getElementById('clock');
 ClockTick(clock);
 
-
-
-
-
-
-// FIX: Refactor the code and use forms,
-//      it's so much easier and cleaner, HTML should be ready for it
-//      There's a hidden button in the form, pressing enter will press that button for submitting the form,
-//      no need to listen to keydown and stuff like that.
-//
 // Optinal: Add search engine alternatives?
 //
 // Search
-function ListenForSearchSubmit() {
-    try {
-        document.getElementById('search-box').addEventListener('keydown', (key) => {
-            let keyCode = key.keyCode;
-            if (keyCode === 13) {
-                let inputedWordsToSearchTrimmed = document.getElementById('search-box').value.trim();
-                if (inputedWordsToSearchTrimmed.length === 0) {
-                    { }
-                }
-                else {
-                    // Filter the words to search
-                    let inputedWordsSplitWithPlus = inputedWordsToSearchTrimmed.split(" ").join('+');
-                    window.open(`https://www.google.com/search?q=${inputedWordsSplitWithPlus}`, "_self")
-                    // console.log(keyCode);
-                }
-            }
-        })
-    } catch { }
-}
+const searchForm = document.forms['search-form'];
+const searchBox = searchForm['search-box'];
+const placeholderMsg = "What Are You Looking For Today?";
+let placeholder = true;
 
-function makeGoogleSearch() {
-    let searchBarInputText = document.getElementById('search-box').value;
-    console.log(searchBarInputText);
-}
-
-
-// FIX: You can get the user's name from the chrome.extention API
-//      Or should he have a setup/settings page?
-//
-// Greeting
-function listenForNameChange(showCloseOrNo) {
-    document.getElementById('windowToAddName').style.zIndex = '6';
-    if (showCloseOrNo === true) {
-        document.getElementById('closeAddName').style.display = 'initial';
-        document.getElementById('closeAddName').addEventListener('click', () => {
-            document.getElementById('windowToAddName').style.zIndex = '0';
-            document.getElementById('windowToAddName').style.display = 'none';
-            document.body.style.pointerEvents = 'auto';
-            document.getElementById('timeDigital').style.display = 'initial';
-            document.getElementById('hello').style.display = 'initial';
-            document.getElementById('searchQuestion').style.display = 'initial';
-            document.getElementById('search-box').style.borderBottom = 'solid #eeeeee 2px';
-            chrome.storage.local.get('userName', function (data) {
-                let name = data['userName'];
-                let helloIntro = `Hello, ${name}`
-                document.getElementById('hello').textContent = helloIntro;
-            })
-        })
+searchBox.value = placeholderMsg;
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (searchBox.value && searchBox.value != placeholderMsg) {
+        window.location.href = 'http://google.com/search?q=' + searchBox.value;
     }
-    else if (showCloseOrNo === false) {
-        { }
+});
+searchBox.addEventListener('focusin', () => {
+    if (placeholder) {
+        searchBox.value = '';
     }
-    document.getElementById('enterName').addEventListener('keydown', (key) => {
-        let keyCode = key.keyCode;
-        if (keyCode === 13) {
-            let inputedWordsToSearchTrimmed = document.getElementById('enterName').value.trim();
-            if (inputedWordsToSearchTrimmed.length === 0) { }
-            else {
-                chrome.storage.local.set({ 'userName': inputedWordsToSearchTrimmed });
-                document.getElementById('windowToAddName').style.display = 'none';
-                document.body.style.pointerEvents = 'auto';
-                document.getElementById('timeDigital').style.display = 'initial';
-                document.getElementById('hello').style.display = 'initial';
-                document.getElementById('searchQuestion').style.display = 'initial';
-                document.getElementById('search-box').style.borderBottom = 'solid #eeeeee 2px';
-                chrome.storage.local.get('userName', function (data) {
-                    let name = data['userName'];
-                    let helloIntro = `Hello, ${name}`
-                    document.getElementById('hello').textContent = helloIntro;
-                })
-                document.getElementById('windowToAddName').style.zIndex = '0';
-            }
-        }
-    })
-}
-
-function welcome() {
-    function changeHelloName() {
-        try {
-            document.getElementById('hello').addEventListener('click', () => {
-                document.body.style.pointerEvents = 'none';
-                document.getElementById('windowToAddName').style.display = 'initial';
-                document.getElementById('windowToAddName').style.pointerEvents = 'auto';
-                document.getElementById('timeDigital').style.display = 'none';
-                document.getElementById('hello').style.display = 'none';
-                document.getElementById('searchQuestion').style.display = 'none';
-                document.getElementById('search-box').style.borderBottom = 'solid transparent';
-                listenForNameChange(true)
-            })
-        } catch { }
-        chrome.storage.local.get('userName', function (data) {
-            if (data['userName'] === undefined) {
-                document.body.style.pointerEvents = 'none';
-                document.getElementById('windowToAddName').style.display = 'initial';
-                document.getElementById('windowToAddName').style.pointerEvents = 'auto';
-                document.getElementById('timeDigital').style.display = 'none';
-                document.getElementById('hello').style.display = 'none';
-                document.getElementById('searchQuestion').style.display = 'none';
-                document.getElementById('search-box').style.borderBottom = 'solid transparent';
-                listenForNameChange(false)
-            }
-            else {
-                let name = data['userName'];
-                let helloIntro = `Hello, ${name}`
-                document.getElementById('hello').textContent = helloIntro;
-                document.getElementById('hello').style.display = "initial"
-            }
-        })
+});
+searchBox.addEventListener('focusout', () => {
+    if (searchBox.value == '') {
+        placeholder = true;
+        searchBox.value = placeholderMsg;
+    } else {
+        placeholder = false;
     }
-    changeHelloName()
-}
+});
 
 // FIX: Need refactoring
 //
