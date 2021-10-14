@@ -1,4 +1,4 @@
-.popup-container {
+.popup::before {
   position: relative;
 }
 

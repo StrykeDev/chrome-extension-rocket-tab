@@ -14,3 +14,5 @@ function TogglePopup(id) {
 popups.forEach((popup) => {
     document.getElementById(popup + '-trigger').addEventListener("click", () => TogglePopup(popup))
 })
+
+// TODO: Export

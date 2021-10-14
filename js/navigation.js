@@ -12,3 +12,5 @@ function GoToPage(pageIndex) {
 pages.forEach((page, index) => {
     document.getElementById('link-' + page).addEventListener("click", () => GoToPage(index))
 })
+
+// TODO: Export

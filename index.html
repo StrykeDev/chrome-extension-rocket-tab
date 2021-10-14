@@ -7,7 +7,7 @@
 
     <title>Rocket Tab</title>
 
-    <!-- fontawesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="frameworks/fontawesome/css/all.min.css" />
     <script
       src="frameworks/fontawesome/js/fontawesome.min.js"
@@ -22,10 +22,10 @@
   </head>
   <body>
     <!-- Top navbar-->
-    <nav class="nav top-nav">
+    <nav class="top-nav">
       <!-- shortcuts popup -->
-      <span class="nav-item popup-container">
-        <a id="shortcuts-popup-trigger"> Shortcuts </a>
+      <span class="nav-item">
+        <a id="shortcuts-popup-trigger">Shortcuts</a>
         <div id="shortcuts-popup" class="popup">
           <!-- TODO: Make the links look nicer and add an option to edit them -->
           <ul class="shortcuts-list">
@@ -50,30 +50,39 @@
     </nav>
 
     <!-- Side navbar -->
-    <nav class="nav side-nav">
+    <nav class="side-nav">
+      <!-- Nav icon -->
       <a id="link-home-page" class="nav-item nav-icon">
         <i class="fas fa-angle-double-right nav-item-icon"></i>
       </a>
+
+      <!-- Background options -->
       <a id="link-background-options" class="nav-item">
         <i class="fa fa-image nav-item-icon"></i>
         <span class="nav-item-title">Background</span>
       </a>
+
+      <!-- Shortcuts options -->
       <a id="link-shortcuts-options" class="nav-item">
         <i class="fa fa-link nav-item-icon"></i>
         <span class="nav-item-title">Shortcuts</span>
       </a>
+
+      <!-- Tab groups options -->
       <a id="link-tab-groups-options" class="nav-item">
         <i class="fa fa-folder nav-item-icon"></i>
         <span class="nav-item-title">Tab Groups</span>
       </a>
     </nav>
+
     <!-- Background -->
     <div id="background-one" class="background"></div>
     <div id="background-two" class="background"></div>
 
     <!-- Main -->
-    <main id="main" class="noselect">
-      <section id="home-page" class="continer text-center">
+    <main id="main">
+      <!-- Home page -->
+      <section id="home-page" class="container text-center text-shadow">
         <h1 id="clock">00:00 AM</h1>
         <h2 id="greeting">Hello you,</h2>
         <form id="search">
@@ -83,16 +92,24 @@
         </form>
       </section>
 
+      <!-- Background options page -->
       <section id="background-options" class="container collapse">
-        <div id="background-list"></div>
+        <div id="background-list">
+          <button
+            type="button"
+            id="clear-background"
+            class="background-item btn drop-shadow"
+          >
+            Default
+          </button>
+        </div>
       </section>
     </main>
 
-    <!-- Post scripts -->
-    <script src="index.js"></script>
+    <!-- scripts -->
+    <script type="module" src="index.js"></script>
+    <script type="module" src="js/background.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/popup.js"></script>
-    <script type="module" src="js/background.js"></script>
-    <script src="js/clock.js"></script>
   </body>
 </html>

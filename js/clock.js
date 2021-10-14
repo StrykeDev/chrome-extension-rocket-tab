@@ -1,23 +1,27 @@
 
-const clock = document.getElementById('clock');
+function LeadingZero(number) {
+    return ('0' + number).slice(-2);
+}
 
-function ClockTick() {
+function GetTimeString() {
     let date = new Date();
-    let h = date.getHours()
-    let m = date.getMinutes()
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
     let symbol = 'AM';
 
-    if (h == 0) {
-        h = 12
+    if (hours == 0) {
+        hours = 12
     }
 
-    if (h > 12) {
-        h = h - 12;
+    if (hours > 12) {
+        hours = hours - 12;
         symbol = "PM";
     }
 
-    clock.innerText = `${('0' + h).slice(-2)}:${('0' + m).slice(-2)} ${symbol}`;
+    return `${LeadingZero(hours)}:${LeadingZero(minutes)} ${symbol}`;
 }
 
-setInterval(() => ClockTick(), 1000);
-ClockTick()
+export default function ClockTick(element) {
+    element.innerText = GetTimeString();
+    setInterval(() => element.innerText = GetTimeString(), 1000);
+}

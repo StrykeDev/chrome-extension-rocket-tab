@@ -3,23 +3,19 @@
 body {
   margin: 0;
   background: linear-gradient(45deg, #d972f3, #3764eb);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(1em, 2vw, 2em);
   color: var(--text-normal);
+  scroll-behavior: smooth;
 }
 
 #main {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
   overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 0 0 0.5rem #00000080;
 }
 
 .container {
@@ -67,13 +63,14 @@ body {
 #background-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .background-item {
   width: 8em;
-  height: 5em;
+  max-width: 12em;
+  height: 6em;
   margin: 0.5em;
-  flex-basis: 10em;
   flex-grow: 1;
   background-repeat: no-repeat;
   background-position: center;

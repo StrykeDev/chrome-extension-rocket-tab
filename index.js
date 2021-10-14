@@ -1,6 +1,8 @@
 "use strict";
 
-// Defining fake chrome storage locally, "should" work.
+import ClockTick from "./js/clock.js";
+
+// Defining fake chrome storage locally for development only, "should" work.
 if (!chrome.storage) {
     chrome = {
         storage: {
@@ -22,6 +24,9 @@ if (!chrome.storage) {
         },
     };
 }
+
+const clock = document.getElementById('clock');
+ClockTick(clock);
 
 // FIX: Refactor the code and use HTML forms,
 //      it's so much easier and cleaner, HTML should be ready for it
@@ -106,6 +111,7 @@ function listenForNameChange(showCloseOrNo) {
         }
     })
 }
+
 function welcome() {
     function changeHelloName() {
         try {
@@ -306,44 +312,6 @@ function addShortcutToDataBase(urlToAddToDataBase, nameToAddToDataBase) {
 
 }
 
-function showShortcuts() {
-    try {
-        let allShortcutLi = document.getElementById('listOfShortcuts').getElementsByTagName('li')
-        for (const li of allShortcutLi) {
-            setTimeout(() => { li.remove() }, 50)
-        }
-        function checkLengthToChangeDisplayOfShortcuts() {
-            if (listOfUrlShortcuts.length == 0) {
-                document.getElementById('listOfShortcuts').style.visibility = 'hidden';
-                console.log('HIDE')
-            }
-            if (listOfUrlShortcuts.length != 0) {
-                document.getElementById('listOfShortcuts').style.visibility = 'visible';
-            }
-        }
-        let listOfUrlShortcuts = []
-        for (let num = 0; num < 100; num++) {
-            chrome.storage.local.get(`shortcut${num}`, (data) => {
-                if (data[`shortcut${num}`] != undefined) {
-                    let urlData = data[`shortcut${num}`]
-                    chrome.storage.local.get(`shortcutName${num}`, (info) => {
-                        let nameInfo = info[`shortcutName${num}`]
-                        appendShortcuts(urlData, nameInfo, num)
-                        listOfUrlShortcuts.push(num)
-                    })
-
-                }
-            })
-        }
-        setTimeout(checkLengthToChangeDisplayOfShortcuts, 100)
-        setTimeout(() => {
-            let myDiv = document.getElementById("showShowShortcutsWindow");
-            myDiv.scrollTop = myDiv.scrollHeight;
-        }, 200)
-    } catch { }
-
-}
-
 function listenForBackBookShort() {
     try {
         document.getElementsByClassName('firstSection')[0].addEventListener("click", () => {
@@ -487,7 +455,7 @@ function listenForBackBookShort() {
 }
 
 // NOTE: If it need to execute here then it shouldn't be a function
-// FIX: Remove the functions wrap
+// FIX: Remove the functions wrap when done
 //
 // addAndRefreshShortcutMini()
 // welcome()
