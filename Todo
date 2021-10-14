@@ -1,0 +1,29 @@
+
+- index.html
+Shortcuts popup:
+    FIX: Links still clickable when hidden
+
+    TODO: Make the links look nicer and add an option to edit them
+
+Side nav:
+    FIX: Minimize on navigation
+
+- index.js
+Search:
+    FIX: Refactor the code and use forms,
+    it's so much easier and cleaner, HTML should be ready for it
+    There's a hidden button in the form, pressing enter will press that button for submitting the form,
+    no need to listen to keydown and stuff like that.
+
+    Optinal: Add search engine alternatives?
+
+Greating:
+    FIX: You can get the user's name from the chrome.extention API
+    Or should he have a setup/settings page?
+
+Shortcuts:
+    FIX: Need refactoring
+
+- background.js
+Export:
+    TODO: add GetCurrentBackground function and background changed event

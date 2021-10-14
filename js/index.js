@@ -44,7 +44,7 @@ ClockTick(clock);
 
 
 
-// FIX: Refactor the code and use HTML forms,
+// FIX: Refactor the code and use forms,
 //      it's so much easier and cleaner, HTML should be ready for it
 //      There's a hidden button in the form, pressing enter will press that button for submitting the form,
 //      no need to listen to keydown and stuff like that.
@@ -469,12 +469,3 @@ function listenForBackBookShort() {
         })
     } catch { }
 }
-
-// NOTE: If it need to execute here then it shouldn't be a function
-// FIX: Remove the functions wrap when done
-//
-// addAndRefreshShortcutMini()
-// welcome()
-// ListenForSearchSubmit()
-// showShortcuts()
-// listenForBackBookShort()
