@@ -1,6 +1,8 @@
 "use strict";
 
-import ClockTick from "./js/clock.js";
+import Navigation from "./modules/Navigation.js";
+import Popup from "./modules/Popup.js";
+import ClockTick from "./modules/Clock.js";
 
 // Defining fake chrome storage locally for development only, "should" work.
 if (!chrome.storage) {
@@ -25,8 +27,22 @@ if (!chrome.storage) {
     };
 }
 
+// Register pages
+const pages = ["home-page", "background-options"];
+Navigation.RegisterPages(pages);
+
+// Register popups
+const popups = ['shortcuts-popup'];
+Popup.RegisterPopups(popups);
+
+// Register the clock
 const clock = document.getElementById('clock');
 ClockTick(clock);
+
+
+
+
+
 
 // FIX: Refactor the code and use HTML forms,
 //      it's so much easier and cleaner, HTML should be ready for it

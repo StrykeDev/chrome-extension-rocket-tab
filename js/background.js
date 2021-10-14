@@ -69,7 +69,7 @@ chrome.storage.local.get('selectedBackground', (result) => {
 })
 
 // TODO: GetCurrentBackground, background changed event
-export default {
-    SetBackground: (backgroundIndex, loaded = true) => BackgroundSelected(backgroundIndex, loaded),
-    ClearBackground: ClearBackground,
-}
+// export default {
+//     SetBackground: (backgroundIndex, loaded = true) => BackgroundSelected(backgroundIndex, loaded),
+//     ClearBackground: ClearBackground,
+// }
