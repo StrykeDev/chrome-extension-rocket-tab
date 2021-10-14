@@ -19,11 +19,17 @@
   --btn-light: rgb(65, 65, 70);
   --btn-normal: rgb(45, 45, 50);
   --btn-dark: rgb(35, 35, 40);
+
+  --border-radius: 0.25em;
 }
 
 /* Removing outline */
 * {
   outline: none;
+}
+
+*::selection {
+  background-color: var(--accent-color);
 }
 
 /* scrollbar */
@@ -99,9 +105,11 @@ button {
 }
 
 .btn {
+  width: 8em;
   padding: 0.5em 1em;
   margin: 0.25em;
-  border-radius: 0.5em;
+  border-radius: var(--border-radius);
+  border: none;
   background-color: var(--btn-normal);
   color: var(--text-normal);
   font-size: inherit;
@@ -134,12 +142,23 @@ button:disabled,
 input {
   font-size: inherit;
   color: inherit;
+  border: none;
+  margin-bottom: 1em;
+}
+
+input[type="text"] {
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 0.25em;
 }
 
 /* Containers */
 .container {
-  max-width: max(1280px, 60vw);
+  width: max(1280px, 60vw);
   margin-left: 5rem;
+  display: block;
+  padding: 1em;
+  border-radius: var(--border-radius);
 }
 
 /* Utilities */
