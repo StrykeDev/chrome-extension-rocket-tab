@@ -9,10 +9,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="frameworks/fontawesome/css/all.min.css" />
-    <script
-      src="frameworks/fontawesome/js/fontawesome.min.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="frameworks/fontawesome/js/fontawesome.min.js"></script>
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="css/theme.css" />
@@ -23,10 +20,10 @@
   <body>
     <!-- Top navbar-->
     <nav class="top-nav">
-      <!-- shortcuts popup -->
+      <!-- Shortcuts popup -->
       <span class="nav-item">
         <a id="shortcuts-popup-trigger">Shortcuts</a>
-        <div id="shortcuts-popup" class="popup">
+        <div id="shortcuts-popup" class="popup drop-shadow">
           <!-- TODO: Make the links look nicer and add an option to edit them -->
           <ul class="shortcuts-list">
             <li>
@@ -98,7 +95,7 @@
           <button
             type="button"
             id="clear-background"
-            class="background-item btn drop-shadow"
+            class="background-item btn drop-shadow default-background"
           >
             Default
           </button>
@@ -106,7 +103,7 @@
       </section>
     </main>
 
-    <!-- scripts -->
+    <!-- Scripts -->
     <script type="module" src="js/index.js"></script>
     <script type="module" src="js/background.js"></script>
   </body>

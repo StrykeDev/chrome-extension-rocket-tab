@@ -2,25 +2,38 @@
 
 body {
   margin: 0;
-  background: linear-gradient(45deg, #d972f3, #3764eb);
   font-family: "Josefin Sans", sans-serif;
   font-size: clamp(1em, 2vw, 2em);
   color: var(--text-normal);
   scroll-behavior: smooth;
+  user-select: none;
 }
 
 #main {
   width: 100vw;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
   overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container {
-  max-width: 1280px;
-  margin-left: 5rem;
+body,
+.default-background {
+  background: linear-gradient(45deg, #b16cff, #4460ff, #b16cff, #4460ff);
+  background-repeat: no-repeat;
+  background-size: 400% !important;
+  animation: gradient-scan 30s linear infinite;
+}
+
+@keyframes gradient-scan {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Welcome screen */
@@ -67,19 +80,16 @@ body {
 }
 
 .background-item {
-  width: 8em;
-  max-width: 12em;
-  height: 6em;
+  aspect-ratio: 16 / 9;
+  height: 5em;
   margin: 0.5em;
-  flex-grow: 1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  filter: saturate(0.2);
+  transition: filter ease 0.25s;
 }
 
-@media (pointer: none), (pointer: coarse) {
-  .container {
-    max-width: none;
-    margin-left: 0;
-  }
+.background-item:hover {
+  filter: saturate(1);
 }

@@ -67,7 +67,7 @@ h6 {
 }
 
 .text-shadow {
-  text-shadow: 0 0 0.5rem #00000080;
+  text-shadow: 0.1rem 0.1rem 0.4rem #000;
 }
 
 /* Links and buttons */
@@ -136,6 +136,12 @@ input {
   color: inherit;
 }
 
+/* Containers */
+.container {
+  max-width: max(1280px, 60vw);
+  margin-left: 5rem;
+}
+
 /* Utilities */
 .hide {
   visibility: hidden !important;
@@ -151,9 +157,12 @@ input {
 }
 
 .drop-shadow {
-  box-shadow: 0 0 0.5em #00000080;
+  box-shadow: 0.1rem 0.1rem 0.4em #000;
 }
 
-.noselect {
-  user-select: none;
+@media (pointer: none), (pointer: coarse) {
+  .container {
+    max-width: none;
+    margin-left: 0;
+  }
 }
